@@ -1,0 +1,31 @@
+cat > ~/kubernetes-pocs/poc01-basic/nginx-deployment.yaml <<'EOF'
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-web
+  labels:
+    app: nginx-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-web
+  template:
+    metadata:
+      labels:
+        app: nginx-web
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.27-alpine
+          ports:
+            - name: http
+              containerPort: 80
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+EOF
