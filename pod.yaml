@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ravindra
+Spec:
+  containers: 
+  - name: rj
+    image: apache
+
